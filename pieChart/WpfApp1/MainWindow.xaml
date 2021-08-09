@@ -1,0 +1,64 @@
+﻿<Window x:Class="WpfApp1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+        xmlns:local="clr-namespace:WpfApp1"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="800" Width="1280" Background="#FF191919">
+    <Grid Margin="0,0,220,0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="31*"/>
+            <ColumnDefinition Width="33*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Button Content="GO!" HorizontalAlignment="Left" Margin="497,240,0,0" Grid.Row="1" VerticalAlignment="Top" Width="200" RenderTransformOrigin="-0.855,1.966" Grid.ColumnSpan="2" Height="50" Grid.Column="1" Click="Button_Click"/>
+        <MediaElement x:Name="Media1" HorizontalAlignment="Left" Height="384" Margin="10,10,0,0" VerticalAlignment="Top" Width="616" Grid.ColumnSpan="2" Source="sample-15s.mp4"/>
+        <MediaElement x:Name="Media1_Copy" HorizontalAlignment="Left" Height="384" Margin="10,0,0,-28" VerticalAlignment="Top" Width="519" Source="sample-15s.mp4" Grid.Row="1" Grid.ColumnSpan="3"/>
+        <local:MpgsViewer x:Name="mbpsViewer" Margin="343,208,370,213" Grid.RowSpan="2" RenderTransformOrigin="-0.46,0.407" Grid.Column="1" Grid.ColumnSpan="2">
+            <local:MpgsViewer.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleX="-0.398"/>
+                    <RotateTransform/>
+                    <TranslateTransform X="-1.592"/>
+                </TransformGroup>
+            </local:MpgsViewer.RenderTransform>
+        </local:MpgsViewer>
+        <Grid Grid.Column="2" HorizontalAlignment="Left" Height="711" Margin="516,0,-211,0" VerticalAlignment="Top" Width="211" Grid.RowSpan="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="356*"/>
+                <RowDefinition Height="0*"/>
+                <RowDefinition Height="355*"/>
+            </Grid.RowDefinitions>
+            <ListBox Name="lbTodoList" HorizontalContentAlignment="Stretch" ItemsSource="{Binding items}" Background="#FF191919" Foreground="White" Margin="2,0,-2,0">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock Text="{Binding WorkLabel}" FontFamily="Meiryo" FontSize="16" FontWeight="Bold"  Background="{Binding Background}" Foreground="#FFFDFDFD">
+                            </TextBlock>
+                            <Image x:Name="image" Source="{Binding Image }" Width="200" Height="100"  ></Image>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <ListBox x:Name="lbWorkLabelList" HorizontalContentAlignment="Stretch" ItemsSource="{Binding items}" Background="#FF191919" Foreground="White" Margin="2,0,-2,-1" Grid.Row="2">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock Text="{Binding WorkLabel}" FontFamily="Meiryo" FontSize="16" FontWeight="Bold"  Background="{Binding Background}" Foreground="White"/>
+                            <TextBlock Text="{Binding TimeStamp}" FontFamily="Meiryo" FontSize="16" FontWeight="Bold"  Background="{Binding Background}" Foreground="White"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+
+        </Grid>
+
+    </Grid>
+</Window>
